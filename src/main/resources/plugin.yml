@@ -1,0 +1,27 @@
+name: AntiAbuse
+version: '${project.version}'
+main: com.github.spook.antiabuse.AntiAbuse
+api-version: 1.8.8
+authors: [ spook ]
+description: Attempts to stop admin-abuse and duplication of custom items
+website: https://spook.fun/
+softdepend:
+  - LuckPerms
+depend:
+  - MassiveCore
+permissions:
+  # -------------------------------------------- #
+  # THE REAL NODES
+  # -------------------------------------------- #
+  antiabuse.bypass: { description: Allows bypassing of anti-abuse checks, no one should have this permission, default: false }
+  antiabuse.alerts: { description: Allows receiving alerts when anti-abuse checks are triggered, default: false }
+  antiabuse.violations: { description: Allows viewing the number of violations a player has, default: false }
+  # -------------------------------------------- #
+  # STAR NOTATION
+  # -------------------------------------------- #
+  antiabuse.*:
+    default: op
+    children:
+      antiabuse.bypass: true
+      antiabuse.alerts: true
+      antiabuse.violations: true
